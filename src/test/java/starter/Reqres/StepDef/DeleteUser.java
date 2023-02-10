@@ -7,7 +7,7 @@ import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
 
-public class DeleteUserStepDef {
+public class DeleteUser {
     @Steps
     ReqresAPI reqresAPI;
     @Given("Delete user with valid id {int}")

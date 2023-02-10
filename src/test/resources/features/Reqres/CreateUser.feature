@@ -5,3 +5,4 @@ Feature: Testing create user reqres API
     When Send request post create user
     Then Status code should be 201 Created
     And Response body name should be "riski ferdian" and job is "QA engineer"
+    And And Validate new user json schema

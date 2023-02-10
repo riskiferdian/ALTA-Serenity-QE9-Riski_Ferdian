@@ -4,20 +4,23 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
+import starter.Reqres.Utils.Constant;
+import starter.Reqres.Utils.ReqresResponses;
 
 import java.io.File;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class CreateUserStepDef {
+public class CreateUser {
     @Steps
     ReqresAPI reqresAPI;
     @Given("Create new user with valid json")
     public void createNewUserWithValidJson() {
-        File jsonReq = new File(ReqresAPI.DIR+"/src/test/resources/JSON/ReqBody/UserReqBody.json");
+        File jsonReq = new File(Constant.JSON_REQUEST+"/CreateUser.json");
         reqresAPI.setPostCreateUser(jsonReq);
     }
 
@@ -34,7 +37,13 @@ public class CreateUserStepDef {
     @And("Response body name should be {string} and job is {string}")
     public void responseBodyNameShlouldBeAndJobIs(String name, String job) {
         SerenityRest.then()
-                .body("name",equalTo(name))
-                .body("job",equalTo(job));
+                .body(ReqresResponses.NAME,equalTo(name))
+                .body(ReqresResponses.JOB,equalTo(job));
+    }
+
+    @And("And Validate new user json schema")
+    public void andValidateNewUserJsonSchema() {
+        File jsonSchema = new File(Constant.JSON_SCHEMA+"/NewUser.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
 }

@@ -5,3 +5,4 @@ Feature: Testing update user reqres API
     When Send request put update user
     Then Status code should be 200 OK
     And Response body name should be "riski ferdian" and job is "QA engineer"
+    And Validate update user json schema
