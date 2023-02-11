@@ -1,5 +1,5 @@
 Feature: Testing get list user reqres API
-  @Latihan
+  @Latihan #Positive Case
   Scenario Outline: Get list users with valid parameter page
     Given Get list user with valid parameter page <page>
     When Send request get list users
@@ -11,7 +11,7 @@ Feature: Testing get list user reqres API
       | 1    |
       | 2    |
 
-  @Tugas
+  @Tugas #Negative Case
   Scenario: Get list users with invalid parameter page
     Given Get list parameter with invalid page "x"
     When Send request get list users

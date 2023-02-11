@@ -7,5 +7,6 @@ public class ReqresResponses {
     public static String DATA_ID = "id";
     public static String DATA_EMAIL = "email";
     public static String TOKEN = "token";
+    public static String ERROR = "error";
 
 }

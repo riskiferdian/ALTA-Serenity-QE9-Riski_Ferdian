@@ -1,5 +1,5 @@
 Feature: Testing get single user reqres API
-  @Tugas
+  @Tugas #Positive Case
   Scenario: get single user with valid parameter
     Given Get single user with valid 2
     When Send request get single user
@@ -7,7 +7,7 @@ Feature: Testing get single user reqres API
     And Response body id should be 2
     And Validate list single user json schema
 
-  @Tugas
+  @Tugas #Negative Case
   Scenario: get single user not found or invalid parameter
     Given Get single user with invalid parameter 23
     When Send request get single user

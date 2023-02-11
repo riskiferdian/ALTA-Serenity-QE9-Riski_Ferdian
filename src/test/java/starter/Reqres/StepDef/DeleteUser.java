@@ -24,4 +24,10 @@ public class DeleteUser {
     public void statusCodeShouldBeNoContent(int noContent) {
         SerenityRest.then().statusCode(noContent);
     }
+
+    // Negative case
+    @Given("Delete user with invalid id {string}")
+    public void deleteUserWithInvalidId(String id) {
+        reqresAPI.invalidDeleteUser(id);
+    }
 }

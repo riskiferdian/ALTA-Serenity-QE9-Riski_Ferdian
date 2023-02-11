@@ -16,7 +16,7 @@ public class UpdateUser {
     ReqresAPI reqresAPI;
     @Given("Update user with valid json and parameter id {int}")
     public void updateUserWithValidJsonAndParameterId(int id) {
-        File jsonReq = new File(Constant.JSON_REQUEST+"/CreateUser.json");
+        File jsonReq = new File(Constant.JSON_REQUEST+"/Update/UpdateUser.json");
         reqresAPI.setPutUpdateUser(id,jsonReq);
     }
 
@@ -27,7 +27,20 @@ public class UpdateUser {
 
     @And("Validate update user json schema")
     public void validateUpdateUserJsonSchema() {
-        File jsonSchema = new File(Constant.JSON_SCHEMA+"/UpdateUser.json");
+        File jsonSchema = new File(Constant.JSON_SCHEMA+"/Update/UpdateUser.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
+    }
+
+    //Negative Case
+    @Given("Update user with invalid parameter id {string}")
+    public void updateUserWithInvalidParameterId(String id) {
+        File json = new File(Constant.JSON_REQUEST+"/Update/UpdateUser.json");
+        reqresAPI.invalidPutUpdateUser(id,json);
+    }
+
+    @Given("Update user with invalid file json and valid id {int}")
+    public void updateUserWithInvalidFileJson(int id) {
+        File json = new File(Constant.JSON_REQUEST+"/Update/InvalidUpdate.json");
+        reqresAPI.setPutUpdateUser(id,json);
     }
 }

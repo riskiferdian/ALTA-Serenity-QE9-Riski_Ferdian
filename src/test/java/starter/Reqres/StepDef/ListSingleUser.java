@@ -35,7 +35,7 @@ public class ListSingleUser {
 
     @And("Validate list single user json schema")
     public void validateListSingleUserJsonSchema() {
-        File jsonSchema = new File(Constant.JSON_SCHEMA+"/SingleUser.json");
+        File jsonSchema = new File(Constant.JSON_SCHEMA+"/List/ListSingleUser.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
 

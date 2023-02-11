@@ -40,7 +40,7 @@ public class ListUser {
 
     @And("Validate get list user json schema")
     public void validateGetListUserJsonSchema() {
-        File jsonSchemaListUser = new File(Constant.JSON_SCHEMA +"/ListUserJSONSchema.json");
+        File jsonSchemaListUser = new File(Constant.JSON_SCHEMA +"/List/ListUser.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchemaListUser));
     }
 
